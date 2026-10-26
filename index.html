@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأكاديمية الرقمية للتعليم والإرشاد الزراعي</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-emerald-800 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <i class="fa-solid fa-seedling text-3xl text-emerald-400"></i>
+                <span class="text-xl font-bold tracking-wide">أكاديمية الهندسة والعلوم الزراعية</span>
+            </div>
+            <nav class="hidden md:flex space-x-6 space-x-reverse font-semibold">
+                <a href="#about" class="hover:text-emerald-300 transition">عن المنصة</a>
+                <a href="#calculators" class="hover:text-emerald-300 transition">الحاسبات الزراعية</a>
+                <a href="#courses" class="hover:text-emerald-300 transition">المسارات التعليمية</a>
+                <a href="#consulting" class="hover:text-emerald-300 transition">طلب استشارة</a>
+            </nav>
+            <a href="#consulting" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold text-sm shadow transition">
+                تواصل معنا
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="about" class="relative bg-emerald-900 text-white py-20 px-4">
+        <div class="container mx-auto text-center max-w-4xl">
+            <span class="bg-emerald-700 text-emerald-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">منصة أكاديمية تعليمية مفتوحة المصدر</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold mt-4 mb-6 leading-tight">المنصة المتقدمة للتعليم والإرشاد وحسابات الري والتربة</h1>
+            <p class="text-lg md:text-xl text-emerald-100 mb-8 leading-relaxed">
+                تقديم الأدوات الحسابية التفاعلية والدورات الإرشادية لدعم الباحثين والمهندسين والمزارعين في إدارة المحاصيل وأنظمة الري الحديثة.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#calculators" class="bg-emerald-400 hover:bg-emerald-500 text-slate-900 font-bold px-6 py-3 rounded-lg shadow-md transition">
+                    ابدأ استخدام الحاسبات
+                </a>
+                <a href="#consulting" class="bg-transparent border border-emerald-400 hover:bg-emerald-800 text-white font-bold px-6 py-3 rounded-lg transition">
+                    تقديم استشارة زراعية
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agricultural Calculators Section -->
+    <section id="calculators" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-800">الحاسبات الزراعية التفاعلية</h2>
+                <p class="text-slate-600 mt-2">أدوات حسابية سريعة لحساب المقررات المادية والأسمدة وإنتاجية المساحات</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Fertilizer Calculator (NPK) -->
+                <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center space-x-3 space-x-reverse mb-4 text-emerald-700">
+                        <i class="fa-solid fa-vial-circle-check text-2xl"></i>
+                        <h3 class="text-xl font-bold">حاسبة كميات الأسمدة (NPK)</h3>
+                    </div>
+                    <form id="npkForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">الكمية المطلوبة من العنصر الصافي (كجم/فدان):</label>
+                            <input type="number" id="elementAmount" class="w-full p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500" placeholder="مثال: 50" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">نسبة التركيز في السماد التجارى (%):</label>
+                            <input type="number" id="fertilizerConcentration" class="w-full p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500" placeholder="مثال: 46 (في حالة اليوريا)" required>
+                        </div>
+                        <button type="button" onclick="calculateNPK()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg transition">
+                            احسب الكمية المطلوبة
+                        </button>
+                    </form>
+                    <div id="npkResult" class="mt-4 p-4 bg-emerald-50 text-emerald-900 rounded-lg hidden font-bold text-center"></div>
+                </div>
+
+                <!-- Water Irrigation Calculator -->
+                <div class="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="flex items-center space-x-3 space-x-reverse mb-4 text-emerald-700">
+                        <i class="fa-solid fa-faucet-drip text-2xl"></i>
+                        <h3 class="text-xl font-bold">حاسبة الاحتياج المائي للري</h3>
+                    </div>
+                    <form id="waterForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">مساحة المزرعة (بالفدان):</label>
+                            <input type="number" id="areaSize" class="w-full p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500" placeholder="مثال: 5" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-1">معدل الري اليومي (متر مكعب / فدان / يوم):</label>
+                            <input type="number" id="waterRate" class="w-full p-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500" placeholder="مثال: 25" required>
+                        </div>
+                        <button type="button" onclick="calculateWater()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg transition">
+                            احسب إجمالي المياه
+                        </button>
+                    </form>
+                    <div id="waterResult" class="mt-4 p-4 bg-emerald-50 text-emerald-900 rounded-lg hidden font-bold text-center"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses / Educational Resources Section -->
+    <section id="courses" class="py-16 bg-slate-100">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-800">المسارات والأبحاث التعليمية</h2>
+                <p class="text-slate-600 mt-2">محتوى إرشادي مخصص للباحثين والطلاب والمهندسين</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-slate-200 p-5">
+                    <i class="fa-solid fa-network-wired text-4xl text-emerald-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">أنظمة الري بالتنقيط الأوتوماتيكية</h3>
+                    <p class="text-slate-600 text-sm mb-4">أساسيات تصميم وإدارة شبكات الري الذكية وتحديد الضغوط والتصرفات المناسبة.</p>
+                    <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold">متاح مجاناً</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-slate-200 p-5">
+                    <i class="fa-solid fa-microchip text-4xl text-emerald-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">أتمتة المزارع والتحكم الآلي</h3>
+                    <p class="text-slate-600 text-sm mb-4">تطبيقات المتحكمات الدقيقة والحساسات في قياس رطوبة التربة والتحكم بالمحابس.</p>
+                    <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold">متاح مجاناً</span>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-slate-200 p-5">
+                    <i class="fa-solid fa-leaf text-4xl text-emerald-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">إدارة التسميد والتربة</h3>
+                    <p class="text-slate-600 text-sm mb-4">طرق حساب المعدلات التسميدية وحل مشاكل الملوحة ونقص العناصر الغذائية.</p>
+                    <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold">متاح مجاناً</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Consultation Form (Web3Forms Integration) -->
+    <section id="consulting" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="bg-slate-50 p-8 rounded-2xl shadow-md border border-slate-200">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-slate-800">طلب استشارة زراعية أو أكاديمية</h2>
+                    <p class="text-slate-600 mt-2">أرسل استفسارك وسيتم الرد عليك عبر البريد الإلكتروني مباشرة</p>
+                </div>
+
+                <!-- Web3Forms Integration Form -->
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">الاسم الكامل:</label>
+                        <input type="text" name="name" required class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500" placeholder="أدخل اسمك">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">البريد الإلكتروني:</label>
+                        <input type="email" name="email" required class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500" placeholder="name@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">موضوع الاستشارة / الاستفسار:</label>
+                        <select name="subject" class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500">
+                            <option value="ري وتنقيط">شبكات الري والتنقيط الأوتوماتيكية</option>
+                            <option value="تسميد وتربة">التسميد والتربة</option>
+                            <option value="أبحاث زراعية">استفسار بحثي / أكاديمي</option>
+                            <option value="عام">استفسار عام</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-1">تفاصيل الاستشارة:</label>
+                        <textarea name="message" rows="4" required class="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500" placeholder="اكتب استفسارك بالتفصيل هنا..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg shadow transition">
+                        إرسال الاستشارة الآن
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2026 الأكاديمية الرقمية للتعليم والإرشاد الزراعي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // NPK Calculator
+        function calculateNPK() {
+            const amount = parseFloat(document.getElementById('elementAmount').value);
+            const conc = parseFloat(document.getElementById('fertilizerConcentration').value);
+            const resultDiv = document.getElementById('npkResult');
+
+            if (amount > 0 && conc > 0) {
+                const totalFertilizer = (amount / (conc / 100)).toFixed(2);
+                resultDiv.innerText = `الكمية المطلوبة من السماد التجاري: ${totalFertilizer} كجم / فدان`;
+                resultDiv.classList.remove('hidden');
+            } else {
+                resultDiv.innerText = 'يرجى إدخال قيم صحيحة أكبر من الصفر.';
+                resultDiv.classList.remove('hidden');
+            }
+        }
+
+        // Water Irrigation Calculator
+        function calculateWater() {
+            const area = parseFloat(document.getElementById('areaSize').value);
+            const rate = parseFloat(document.getElementById('waterRate').value);
+            const resultDiv = document.getElementById('waterResult');
+
+            if (area > 0 && rate > 0) {
+                const totalWater = (area * rate).toFixed(2);
+                resultDiv.innerText = `إجمالي الاحتياج المائي اليومي: ${totalWater} متر مكعب / يوم`;
+                resultDiv.classList.remove('hidden');
+            } else {
+                resultDiv.innerText = 'يرجى إدخال قيم صحيحة أكبر من الصفر.';
+                resultDiv.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
